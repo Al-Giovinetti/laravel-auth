@@ -28,6 +28,9 @@
             </tbody>
         </table>
         {{ $projects->links() }}
+        <div class="new-project d-flex justify-content-center">
+            <a href="{{route('admin.projects.create') }}" class="btn btn-primary w-25 ">Create a new project</a>
+        </div>
     </div>    
 </div>
 

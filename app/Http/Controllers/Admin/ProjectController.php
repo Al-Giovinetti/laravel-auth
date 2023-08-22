@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Support\Facades\Date;
+use Carbon\Carbon;
 
 class ProjectController extends Controller
 {
@@ -23,7 +24,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -31,7 +32,17 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $currentDate = Carbon::now();
+        $data = $request->all();
+
+        $newProject=new Project();
+        $newProject->title = $data['title'];
+        $newProject->description = $data['description'];
+        $newProject->attachments = $data['attachments'];
+        $newProject->last_modified = $currentDate;
+        $newProject->save();
+
+        return redirect()->route('admin.projects.index',$newProject->id);
     }
 
     /**
