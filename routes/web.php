@@ -21,6 +21,8 @@ Route::prefix('admin') -> name('admin.') -> middleware('auth') -> group(function
     Route::get('/home',[AdminHomeController::class,'home'])->name('home');
 
     Route::get('/index',[AdminProjectController::class,'index'])->name(('projects.index'));
+    Route::get('/show/{id}',[AdminProjectController::class,'show'])->name(('projects.show'));
+
 });
 
 Route::name('guest.') -> group(function () {
