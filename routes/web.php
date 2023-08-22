@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,12 @@ use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 */
 Auth::routes();
 
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function (){
+Route::prefix('admin') -> name('admin.') -> middleware('auth') -> group(function () {
     Route::get('/home',[AdminHomeController::class,'home'])->name('home');
+});
+
+Route::name('guest.') -> group(function () {
+    Route::get('/',[GuestHomeController::class,'home'])->name('home');
 });
 
 
