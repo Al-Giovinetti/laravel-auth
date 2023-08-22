@@ -18,3 +18,5 @@ Auth::routes();
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function (){
     Route::get('/home',[AdminHomeController::class,'home'])->name('home');
 });
+
+
