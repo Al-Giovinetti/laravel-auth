@@ -20,8 +20,6 @@
             <div class="d-flex p-2">
                 <input type="submit" value="Create" class="btn btn-sm btn-primary">
                 <a href="{{route('admin.projects.index')}}" class="btn btn-sm btn-secondary ms-3">Go back</a>
-                <a href="" class="btn btn-sm btn-success mx-3">Edit</a>
-                <a href="" class="btn btn-sm btn-warning">Destroy</a>
             </div>
         </div>
         </form>

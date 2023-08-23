@@ -20,10 +20,7 @@ Auth::routes();
 Route::prefix('admin') -> name('admin.') -> middleware('auth') -> group(function () {
     Route::get('/home',[AdminHomeController::class,'home'])->name('home');
 
-    Route::get('/index',[AdminProjectController::class,'index'])->name('projects.index');
-    Route::get('/create',[AdminProjectController::class,'create'])->name('projects.create');
-    Route::post('/store',[AdminProjectController::class,'store'])->name('projects.store');
-    Route::get('/show/{id}',[AdminProjectController::class,'show'])->name(('projects.show'));
+    Route::resource('/projects',AdminProjectController::class);
 
 });
 

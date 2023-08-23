@@ -20,7 +20,7 @@
                     <td> {{ $project['description'] }}</td>
                     <td class="d-flex">
                         <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-sm btn-primary ">View</a>
-                        <a href="" class="btn btn-sm btn-success mx-3">Edit</a>
+                        <a href=" {{ route('admin.projects.edit', $project->id) }} " class="btn btn-sm btn-success mx-3">Edit</a>
                         <a href="" class="btn btn-sm btn-warning">Destroy</a>
                     </td>
                 </tr>
