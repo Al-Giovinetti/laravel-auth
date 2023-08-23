@@ -14,7 +14,14 @@
             <div class="d-flex p-2">
                 <a href="{{ route('admin.projects.index') }}" class="btn btn-sm btn-primary ">Go back</a>
                 <a href="{{ route('admin.projects.edit',$project->id) }}" class="btn btn-sm btn-success mx-3">Edit</a>
-                <a href="" class="btn btn-sm btn-warning">Destroy</a>
+                <form action="{{ route('admin.projects.destroy',$project) }}" class="d-inline-block" method="POST">
+                @csrf
+                @method("DELETE")
+
+                    <button type="submit" class="btn btn-sm btn-warning">
+                        Delete
+                    </button>
+                </form>
             </div>
         </div>
     </div>
