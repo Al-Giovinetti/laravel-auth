@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
+            $table->text('image');
             $table->text('description')->nullable();
             $table->tinyInteger('attachments');
             $table->date('last_modified');

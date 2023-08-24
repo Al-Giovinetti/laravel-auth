@@ -17,6 +17,7 @@ class ProjectSeeder extends Seeder
         for ($i=0;$i<100;$i++){
             $newProject = new Project();
             $newProject -> title = ucfirst($faker -> unique() -> words(5,true));
+            $newProject -> image = $faker->imageUrl(640, 480, 'animals', true);
             $newProject -> description = $faker -> paragraph(1);
             $newProject -> attachments = $faker ->  numberBetween(1, 30);
             $newProject -> last_modified = $faker -> dateTimeBetween('-1 years', '+1 years');
