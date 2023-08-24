@@ -11,7 +11,7 @@
             </div>
             <div class="d-flex flex-column">
                 <label for="title">Image</label> 
-                <input type="text" name="title" id="title" value="{{ $project->image }}">
+                <input type="text" name="title" id="title">
             </div>
             <div class="d-flex flex-column">
                 <label for="description">Description</label>

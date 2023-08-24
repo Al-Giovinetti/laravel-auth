@@ -33,17 +33,19 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->validate([
+            'title'=> ['required','unique:projects','max:255'],
+            'image'=> ['required','image'],
+            'description'=>['required','max:500'],
+            'attachments'=> ['required','max:30']
+        ]);
+
         $currentDate = Carbon::now();
-        $data = $request->all();
+        $data['last_modified']=$currentDate;
 
-        $newProject=new Project();
-        $newProject->title = $data['title'];
-        $newProject->description = $data['description'];
-        $newProject->attachments = $data['attachments'];
-        $newProject->last_modified = $currentDate;
-        $newProject->save();
+        $newProject = Project::created($data);
 
-        return redirect()->route('admin.projects.index',$newProject->id);
+        return redirect()->route('admin.projects.index',compact('newProject'));
     }
 
     /**
@@ -70,6 +72,7 @@ class ProjectController extends Controller
     {
         $data = $request->validate([
             'title'=>['required','min:3','max:255',Rule::unique('projects')->ignore($project->id)],
+            'image'=>['required'],
             'description'=>['max:255'],
             'attachments' =>['required','max:30']
         ]);
