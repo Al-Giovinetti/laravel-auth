@@ -19,8 +19,8 @@
                     <td> {{ $project['title'] }} </td>
                     <td> {{ $project['description'] }}</td>
                     <td class="d-flex">
-                        <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-sm btn-primary ">View</a>
-                        <a href=" {{ route('admin.projects.edit', $project->id) }} " class="btn btn-sm btn-success mx-3">Edit</a>
+                        <a href="{{route('admin.projects.show', $project)}}" class="btn btn-sm btn-primary ">View</a>
+                        <a href=" {{ route('admin.projects.edit', $project) }} " class="btn btn-sm btn-success mx-3">Edit</a>
                         <form action="{{ route('admin.projects.destroy',$project) }}" class="d-inline-block" method="POST">
                         @csrf
                         @method("DELETE")

@@ -11,6 +11,10 @@
                 <input type="text" name="title" id="title" value="{{ $project->title }}">
             </div>
             <div class="d-flex flex-column">
+                <label for="title">Image</label> 
+                <input type="text" name="title" id="title" value="{{ $project->image }}">
+            </div>
+            <div class="d-flex flex-column">
                 <label for="description">Description</label>
                 <textarea name="description" id="description" cols="30" rows="10">
                     {{ $project->description }}
