@@ -12,7 +12,7 @@
             </div>
             <div class="d-flex flex-column">
                 <label for="title">Image</label> 
-                <input type="text" name="title" id="title" value="{{ $project->image }}">
+                <input type="text" name="image" id="image" value="{{ $project->image }}">
             </div>
             <div class="d-flex flex-column">
                 <label for="description">Description</label>
@@ -25,7 +25,9 @@
                 <input type="number" name="attachments" id="attachments" placeholder="Insert number of attachments files" value="{{ $project->attachments }}">
             </div>
             <div class="d-flex p-2">
-                <input type="submit" value="Edit" class="btn btn-sm btn-success">
+                <button type="submit" class="btn btn-sm btn-success">
+                    Edit
+                </button>
                 <a href="{{ route('admin.projects.index')}}" class="btn btn-sm btn-secondary ms-3" >Go back</a>
             </div>
         </div>

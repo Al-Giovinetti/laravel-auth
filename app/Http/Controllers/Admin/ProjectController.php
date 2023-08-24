@@ -35,15 +35,15 @@ class ProjectController extends Controller
     {
         $data = $request->validate([
             'title'=> ['required','unique:projects','max:255'],
-            'image'=> ['required','image'],
+            'image'=> ['required'],
             'description'=>['required','max:500'],
-            'attachments'=> ['required','max:30']
+            'attachments'=> ['required','max:30'],
         ]);
+       $data['last_modified'] = now()->format('Y-m-d');
 
-        $currentDate = Carbon::now();
-        $data['last_modified']=$currentDate;
+       $newProject = Project::create($data);
 
-        $newProject = Project::created($data);
+        $newProject->save();
 
         return redirect()->route('admin.projects.index',compact('newProject'));
     }
@@ -76,6 +76,7 @@ class ProjectController extends Controller
             'description'=>['max:255'],
             'attachments' =>['required','max:30']
         ]);
+
 
         $currentDate = Carbon::now();
         $data['last_modified'] = $currentDate;
