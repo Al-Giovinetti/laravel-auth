@@ -19,6 +19,7 @@ return new class extends Migration
             $table->tinyInteger('attachments');
             $table->date('last_modified');
             $table->timestamps();
+             
         });
     }
 

@@ -8,6 +8,7 @@ use App\Models\Project;
 use Illuminate\Support\Facades\Date;
 use Carbon\Carbon;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -33,15 +34,20 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $img_path = Storage::put('uploads',$request['image']);
+        $currentDate = now()->format('Y-m-d');
+
         $data = $request->validate([
             'title'=> ['required','unique:projects','max:255'],
-            'image'=> ['required'],
+            'image'=> ['required','image'],
+            
             'description'=>['required','max:500'],
             'attachments'=> ['required','max:30'],
         ]);
-       $data['last_modified'] = now()->format('Y-m-d');
-
-       $newProject = Project::create($data);
+        $data['image']=$img_path;
+        $data['last_modified'] = $currentDate;
+        @dd($data);
+        $newProject = Project::create($data);
 
         $newProject->save();
 

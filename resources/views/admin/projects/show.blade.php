@@ -8,7 +8,11 @@
                 <li> <strong> ID </strong> {{ $project['id']}}</li>
                 <li> <strong>Title</strong> {{ $project['title']}}</li>
                 <li class="py-2">
-                    <img src="{{ $project['image'] }}" alt="image {{ $project['title'] }}"></li>
+                    @if(str_starts_whit($project->image,'http'))
+                        <img src="{{'$project->image}}" alt="image {{ $project->title }}"></li>
+                    @else
+                        <img src="{{ asset('storage/'.'$project->image}}" alt="image {{ $project->title }}"></li>
+                    @endif
                 </li> 
                 <li> <strong>Description</strong> {{ $project['description']}}</li>
                 <li> <strong>Number of attachments</strong> {{ $project['attachments']}}</li>
