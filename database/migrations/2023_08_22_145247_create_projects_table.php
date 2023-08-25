@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('image');
             $table->text('description')->nullable();
             $table->tinyInteger('attachments');
-            $table->date('last_modified');
             $table->timestamps();
              
         });

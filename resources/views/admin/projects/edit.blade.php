@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="col-12">
-        <form action="{{ route('admin.projects.update', $project)}}" method="POST" class="card p-3">
+        <form action="{{ route('admin.projects.update', $project)}}" method="POST" class="card p-3" enctype="multipart/form-data">
         @csrf
         @method("PUT")
             <div class="d-flex flex-column">
@@ -12,7 +12,7 @@
             </div>
             <div class="d-flex flex-column">
                 <label for="title">Image</label> 
-                <input type="text" name="image" id="image" value="{{ $project->image }}">
+                <input type="file" name="image" id="image" placeholder="insert your file">
             </div>
             <div class="d-flex flex-column">
                 <label for="description">Description</label>

@@ -45,8 +45,6 @@ class ProjectController extends Controller
             'attachments'=> ['required','max:30'],
         ]);
         $data['image']=$img_path;
-        $data['last_modified'] = $currentDate;
-        @dd($data);
         $newProject = Project::create($data);
 
         $newProject->save();
@@ -76,6 +74,8 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        $img_path = Storage::put('uploads',$request['image']);
+
         $data = $request->validate([
             'title'=>['required','min:3','max:255',Rule::unique('projects')->ignore($project->id)],
             'image'=>['required'],
@@ -83,9 +83,9 @@ class ProjectController extends Controller
             'attachments' =>['required','max:30']
         ]);
 
+        Storage::delete($project->image);
 
-        $currentDate = Carbon::now();
-        $data['last_modified'] = $currentDate;
+        $data['image']=$img_path;
 
         $project->update($data);
 
@@ -97,6 +97,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        Storage::delete($project->image);
         $project->delete();
 
         return redirect()->route('admin.projects.index'); 

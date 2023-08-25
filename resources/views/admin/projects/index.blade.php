@@ -17,19 +17,19 @@
                 <tr>
                     <th scope="row">{{ $project['id'] }}</th>
                     <td> {{ $project['title'] }} </td>
-                    <td> {{ $project['description'] }}</td>
-                    <td class="d-flex">
+                    <td class="overflow-y-hidden w-50"> {{ $project['description'] }}</td>
+                    <td >
                         <a href="{{route('admin.projects.show', $project)}}" class="btn btn-sm btn-primary ">View</a>
-                        <a href=" {{ route('admin.projects.edit', $project) }} " class="btn btn-sm btn-success mx-3">Edit</a>
+                        <a href=" {{ route('admin.projects.edit', $project) }} " class="btn btn-sm btn-success">Edit</a>
                         <form action="{{ route('admin.projects.destroy',$project) }}" class="d-inline-block" method="POST">
-                        @csrf
-                        @method("DELETE")
+                            @csrf
+                            @method("DELETE")
 
-                    <button type="submit" class="btn btn-sm btn-warning">
-                        Delete
-                    </button>
-                </form>
-                    </td>
+                            <button type="submit" class="btn btn-sm btn-warning">
+                                Delete
+                            </button>
+                        </form>
+                    </td>    
                 </tr>
                 @endforeach
             </tbody>

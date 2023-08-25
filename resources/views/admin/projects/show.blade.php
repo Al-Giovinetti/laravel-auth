@@ -8,15 +8,15 @@
                 <li> <strong> ID </strong> {{ $project['id']}}</li>
                 <li> <strong>Title</strong> {{ $project['title']}}</li>
                 <li class="py-2">
-                    @if(str_starts_whit($project->image,'http'))
-                        <img src="{{'$project->image}}" alt="image {{ $project->title }}"></li>
+                    @if(str_starts_with($project->image,'http'))
+                        <img src="{{ $project->image }}" alt="image {{ $project->title }}">
                     @else
-                        <img src="{{ asset('storage/'.'$project->image}}" alt="image {{ $project->title }}"></li>
+                        <img src="{{ asset('storage/'. $project->image) }}" alt="image . ' ' .{{ $project->title }}">
                     @endif
                 </li> 
                 <li> <strong>Description</strong> {{ $project['description']}}</li>
                 <li> <strong>Number of attachments</strong> {{ $project['attachments']}}</li>
-                <li> <strong>Last modified</strong> {{ $project['last_modified']}}</li>
+                <li> <strong>Last modified</strong> {{ $project->updated_at}}</li>
             </ul>
             <div class="d-flex p-3">
                 <a href="{{ route('admin.projects.index') }}" class="btn btn-sm btn-primary ">Go back</a>
